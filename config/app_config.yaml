@@ -1,0 +1,6 @@
+app:
+  title: "Student Performance Predictor"
+  theme: "dark"
+data:
+  raw_data_path: "data/student_data.csv"
+  processed_data_path: "data/cleaned_student_data.csv"

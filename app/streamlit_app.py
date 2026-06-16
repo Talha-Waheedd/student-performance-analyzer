@@ -67,14 +67,18 @@ for col in df_raw.columns:
     if col in cols_to_drop:
         continue
     
-    if df_raw[col].dtype == 'object':
-        options = df_raw[col].unique().tolist()
-        input_data[col] = st.sidebar.selectbox(f"{col.capitalize()}", options)
-    else:
+    if pd.api.types.is_numeric_dtype(df_raw[col]):
         min_val = int(df_raw[col].min())
         max_val = int(df_raw[col].max())
         mean_val = int(df_raw[col].mean())
-        input_data[col] = st.sidebar.slider(f"{col.capitalize()}", min_val, max_val, mean_val)
+        # Avoid issues where min == max
+        if min_val == max_val:
+            input_data[col] = st.sidebar.number_input(f"{col.capitalize()}", value=min_val)
+        else:
+            input_data[col] = st.sidebar.slider(f"{col.capitalize()}", min_val, max_val, mean_val)
+    else:
+        options = df_raw[col].unique().tolist()
+        input_data[col] = st.sidebar.selectbox(f"{col.capitalize()}", options)
 
 # Prediction Button
 if st.sidebar.button("Predict Performance"):

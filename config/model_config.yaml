@@ -1,0 +1,9 @@
+pipeline:
+  target_col: "passed"
+  test_size: 0.1
+  val_size: 0.1
+  random_state: 42
+  outlier_method: "iqr"
+  imputation_strategy: "median"
+  scaling_method: "standard"
+  handle_imbalance: "smote"

@@ -5,3 +5,13 @@ seaborn
 scikit-learn
 streamlit
 jupyter
+xgboost
+lightgbm
+mlflow
+optuna
+imbalanced-learn
+shap
+plotly
+PyYAML
+pytest
+pytest-cov
